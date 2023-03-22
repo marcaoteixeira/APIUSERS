@@ -53,6 +53,36 @@ async findById(id){
         }
 
     }
+    async update(id,email,role){
+
+        var user = await this.findById(id);
+
+        if(user != undefined){
+
+            var edituser = {};
+            if(email != undefined){
+                if(email != user.email){
+                    var result = await this.findEmail(email);
+                    if(result == false){
+                        edituser.email = email;
+
+                    }
+
+                }else{
+
+                }
+            }
+
+
+
+
+            
+        }else{
+            return{status: false,err: "O usuário não existe!"}
+        }
+
+
+    }
 }
 
 module.exports = new User();
